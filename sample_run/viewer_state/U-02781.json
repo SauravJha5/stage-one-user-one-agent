@@ -1,0 +1,25 @@
+{
+  "viewer_id": "U-02781",
+  "arm": "agent",
+  "dialect": {
+    "value": "d4",
+    "source": "app_setting",
+    "received_at": "2026-10-01T02:51:51.488000Z"
+  },
+  "subscription_status": null,
+  "signup_date": null,
+  "notifications_opt_in": true,
+  "whatsapp_opt_in": false,
+  "last_message_date_ist": null,
+  "active_goal_id": "G01",
+  "active_goal_name": "first_play_24h",
+  "active_goal_deadline": "2026-10-02T02:51:48.252000Z",
+  "active_goal_success_event": "play_started",
+  "completed_goals": [],
+  "watched_titles": [],
+  "finished_episodes": [],
+  "prior_events": [
+    "login_success",
+    "app_open"
+  ]
+}

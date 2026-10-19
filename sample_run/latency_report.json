@@ -1,0 +1,7 @@
+{
+  "total_decisions": 1501,
+  "average_ms": 1.92,
+  "p95_ms": 19.13,
+  "sla_breaches_above_60s": 0,
+  "total_run_time_s": 6.35
+}

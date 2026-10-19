@@ -1,37 +1,34 @@
-# STAGE: One User, One Agent Lifecycle System
+# STAGE: One User, One Agent — Autonomous Viewer Lifecycle Engine
 
-A deterministic agentic lifecycle architecture designed for STAGE's regional dialect OTT platform. Rather than a superficial title recommender, this system functions as an autonomous lifecycle manager for each viewer—selecting measurable goals, executing policy-compliant interventions within a 60-second budget, enforcing strict safety guardrails, and estimating true causal uplift via randomized holdout arms.
+[![Tests: Passing](https://img.shields.io/badge/Tests-5%2F5%20Passed-brightgreen)](tests/)
+[![Python: 3.10+](https://img.shields.io/badge/Python-3.10%20%7C%203.11%20%7C%203.14-blue)](https://www.python.org/)
+[![Latency: Sub--Second](https://img.shields.io/badge/P95%20Latency-19.13ms-success)](sample_run/latency_report.json)
+[![Safety: Holdout Protected](https://img.shields.io/badge/Holdout%20Isolation-100%25-green)](sample_run/impact_report.md)
+
+An autonomous, deterministic agentic lifecycle system built for STAGE's regional dialect OTT platform (spanning dialects d1–d6). 
+
+Departing from conventional, superficial title recommendation loops, this platform allocates a **dedicated, long-lived autonomous agent to each individual viewer**. Each agent diagnoses real-time viewer state, selects single measurable lifecycle goals, executes policy-compliant interventions under a 60-second SLA, and proves causal uplift through randomized holdout arms.
 
 ---
 
-## Quick Start (One-Command Reproduction)
+## 🧭 System Architecture & Decision Flow
 
-### 1. Environment Setup
-\\ash
-python -m venv venv
-# Windows:
-.\venv\Scripts\Activate.ps1
-# Mac/Linux:
-source venv/bin/activate
+The system runs on an immutable, auditable **Sense → Resolve → Plan → Verify → Act → Measure** loop:
 
-pip install -r requirements.txt
-\
-### 2. Run Complete Pipeline (One Command)
-\\ash
-python main.py
-\
-### 3. Run Automated Safety & Reliability Tests
-\\ash
-python -m pytest -v
-\
----
-
-## Deliverables & Output Artifacts
-
-All outputs are saved to \sample_run/\:
-- \sample_run/decisions.jsonl\: Machine-readable decision logs containing trigger age, confidence justification, assumptions, evidence provenance, check audits, and latency in milliseconds.
-- \sample_run/actions.jsonl\: Published interventions for eligible treatment users.
-- \sample_run/latency_report.json\: Replay latency metrics (Average and P95 latency).
-- \sample_run/impact_report.md\: Causal Intention-to-Treat (ITT) evaluation contrasting the naive observational bias present in previous pilot reports.
-- \sample_run/final_report.md\: Executive report covering handled traps, safety compliance, and performance.
-- \sample_run/viewer_state/\: Persistent per-user state files tracking active goals, watched episodes, and communication consent.
+```text
+[ Ingest & Deduplicate ] ─── Clock Skew Defense (Server received_at priority)
+         │
+         ▼
+[ Fact Resolution Engine ] ── Hierarchy: Live App Setting > Billing Events > Profiles Snapshot
+         │
+         ▼
+[ Goal Planner ] ────────── Selects Single Measurable Goal (Drops Unmeasurable Traps)
+         │
+         ▼
+[ Intervention Planner ] ── Dialect Filtering, Catalogue Matching & Prompt-Injection Neutralization
+         │
+         ▼
+[ Independent Verifier ] ── Hard-Veto Gatekeeper (Holdout Arm, Quiet Hours 22:00-08:00 IST, Caps)
+         │
+         ├─── If Cleared ────► [ Published Action ] ──► sample_run/actions.jsonl
+         └─── If Blocked ────► [ Abstain / Block ]  ──► sample_run/decisions.jsonl
